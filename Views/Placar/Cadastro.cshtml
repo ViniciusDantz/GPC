@@ -1,7 +1,7 @@
-﻿@model GPC.Models.Jogador
+﻿@model GPC.Models.ViewModels.PlacarViewModel
 
 @{
-    ViewData["Title"] = "Cadastrar Jogador(a)";
+    ViewData["Title"] = "Cadastrar Placar";
 }
 
 <style>
@@ -19,26 +19,30 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Cadastro">
+            <input hidden name="Placar.Jogador.Nome" value="aaaaaa"/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label">Nome <span class="text-danger">*</span></label>
-                <input asp-for="Nome" Title="Edite aqui a nome do(a) jogador(a)" type="text" minlength="3" maxlength="40" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+            <select class="selectpicker" title="Jogador" id="selectJogador" name="Placar.Jogador.Id"
+            asp-for="Placar.Jogador.Id" data-live-search="true" data-style="btn-primary" data-width="100%">
+                <option style="background-color: #2c3e50; text-align: center;" disabled="true">Jogador</option>
+                @foreach(var jogador in Model.Jogadores){
+                    <option value="@jogador.Id">@(jogador.Nome)</option>
+                }
+            </select>
+            <span asp-validation-for="Placar.Id" class="text-danger"></span>
+            <div class="form-group" style="margin-top: 20px;">
+                <label asp-for="Placar.Pontos" class="control-label">Pontos <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Pontos" type="text" maxlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+                Title="Edite aqui os pontos do placar" class="form-control" />
+                <span asp-validation-for="Placar.Pontos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Idade" class="control-label">Idade <span class="text-danger">*</span></label>
-                <input asp-for="Idade" type="text" maxlength="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
-                Title="Edite aqui a idade do(a) jogador(a)" class="form-control" />
-                <span asp-validation-for="Idade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nacionalidade" class="control-label"></label>
-                <input asp-for="Nacionalidade" Title="Edite aqui a nacionalidade do(a) jogador(a)" type="text" minlength="3" maxlength="40" class="form-control"/>
-                <span asp-validation-for="Nacionalidade" class="text-danger"></span>
+                <label asp-for="Placar.Data" class="control-label">Data <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Data" type="date" Title="Edite aqui a data do placar" class="form-control"/>
+                <span asp-validation-for="Placar.Data" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" id="btnCadP" title="Cadastrar jogador(a)" value="Salvar" class="btn btn-primary" />
+                <input type="submit" id="btnCadP" title="Cadastrar placar" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -47,10 +51,13 @@
 <div style="margin-top: 15px;">
     <a asp-action="Index" style="color: #e74c3c; display: flex; align-items: center;" class="text-danger">
         <i class="fas fa-arrow-left fa-2x" style="margin: 0px 10px 0px 0px;"></i>
-        <p style="margin: 0px;" title="Voltar à lista de jogadores(as)">Voltar à lista</p>
+        <p style="margin: 0px;" title="Voltar à lista de placares">Voltar à lista</p>
     </a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-pt_BR.min.js"></script>
 }

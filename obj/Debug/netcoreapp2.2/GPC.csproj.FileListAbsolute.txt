@@ -33,3 +33,7 @@
 /media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/bin/Debug/netcoreapp2.2/GPC.Views.pdb
 /media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/GPC.Views.pdb
 /media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/GPC.csproj.CopyComplete
+/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/Razor/Views/Placar/Cadastro.g.cshtml.cs
+/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/Razor/Views/Placar/Delete.g.cshtml.cs
+/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/Razor/Views/Placar/Editar.g.cshtml.cs
+/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/obj/Debug/netcoreapp2.2/Razor/Views/Placar/Index.g.cshtml.cs

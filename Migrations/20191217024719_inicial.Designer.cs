@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GPC.Migrations
 {
     [DbContext(typeof(GPC_Context))]
-    [Migration("20191217012507_inicial")]
+    [Migration("20191217024719_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,13 +45,13 @@ namespace GPC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Data");
+
                     b.Property<int>("IdJogador");
 
                     b.Property<int>("JogadorId");
 
                     b.Property<double>("Pontos");
-
-                    b.Property<DateTime>("data");
 
                     b.HasKey("Id");
 

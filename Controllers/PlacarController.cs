@@ -12,10 +12,12 @@ namespace GPC.Controllers
     public class PlacarController : Controller
     {
         private readonly PlacarService _placarService;
+        private readonly JogadorService _jogadorService;
 
-        public PlacarController(PlacarService placarservice)
+        public PlacarController(PlacarService placarservice, JogadorService jogadorService)
         {
             _placarService = placarservice;
+            _jogadorService = jogadorService;
         }
 
         public async Task<IActionResult> Index()
@@ -24,16 +26,16 @@ namespace GPC.Controllers
             return View(list);
         }
 
-        public IActionResult Cadastro()
+        public async Task<IActionResult> Cadastro()
         {
-            return View();
+            return View(new PlacarViewModel{ Jogadores = await _jogadorService.FindAllAsync() });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Cadastro(PlacarViewModel formview)
         {
-            if (!ModelState.IsValid || formview.Placar.Pontos < 0)
+            if (!ModelState.IsValid || formview.Placar.Pontos <= 0)
             {
                 TempData["Message"] = "Um erro ocorreu durante o processo de cadastro, "
                 +"verifique se os campos estão preenchidos corretamente.";
@@ -68,7 +70,7 @@ namespace GPC.Controllers
             {
                 return RedirectToAction(nameof(Error), new { message = "Placar inválido." });
             }
-            return View(new PlacarViewModel { Placar = placar });
+            return View(new PlacarViewModel { Placar = placar, Jogadores = await _jogadorService.FindAllAsync() });
         }
 
         [HttpPost]
@@ -86,29 +88,22 @@ namespace GPC.Controllers
                     +"verifique se os campos estão preenchidos corretamente.";
                     TempData["Titulo"] = "Erro!";
                     TempData["CssClassName"] = "alert-error bg-danger";
-                    return View(new PlacarViewModel { Placar = formview.Placar, NomeAntigo = formview.NomeAntigo });
+                    return View(new PlacarViewModel { Placar = formview.Placar, Jogadores = await _jogadorService.FindAllAsync() });
                 }
-                if(formview.NomeAntigo != null){
-                    /* formview.Placar.Nome = Utils.removeBadChars(formview.Placar.Nome);
-                    formview.Placar.Nacionalidade = Utils.removeBadChars(formview.Placar.Nacionalidade);
-                    // Nome
-                    formview.Placar.Nome = formview.Placar.Nome.Trim();
-                    formview.Placar.Nome = Regex.Replace(formview.Placar.Nome, @"\s+", " ");
-                    if(formview.Placar.Nome.Length < 3){
-                        ModelState.AddModelError(String.Empty, "'Nome' deve ter no mínimo 3 caracteres.");
-                        return View(formview);
-                    } */
-                    await _placarService.UpdateAsync(formview.Placar);
-                    TempData["Message"] = $"Placar editado com sucesso.";
-                    TempData["Titulo"] = "Sucesso!";
-                    TempData["CssClassName"] = "alert-success bg-success";
-                    return RedirectToAction(nameof(Index));
-                }else{
-                    TempData["Message"] = "Um erro ocorreu durante o processo de edição, procure o placar novamente.";
-                    TempData["Titulo"] = "Erro!";
-                    TempData["CssClassName"] = "alert-error bg-danger";
-                    return View(new PlacarViewModel { NomeAntigo = formview.NomeAntigo });
-                }
+                /* formview.Placar.Nome = Utils.removeBadChars(formview.Placar.Nome);
+                formview.Placar.Nacionalidade = Utils.removeBadChars(formview.Placar.Nacionalidade);
+                // Nome
+                formview.Placar.Nome = formview.Placar.Nome.Trim();
+                formview.Placar.Nome = Regex.Replace(formview.Placar.Nome, @"\s+", " ");
+                if(formview.Placar.Nome.Length < 3){
+                    ModelState.AddModelError(String.Empty, "'Nome' deve ter no mínimo 3 caracteres.");
+                    return View(formview);
+                } */
+                await _placarService.UpdateAsync(formview.Placar);
+                TempData["Message"] = $"Placar editado com sucesso.";
+                TempData["Titulo"] = "Sucesso!";
+                TempData["CssClassName"] = "alert-success bg-success";
+                return RedirectToAction(nameof(Index));
             } catch(Exception e) {
                 TempData["Message"] = "Um erro ocorreu durante o processo de edição.";
                 TempData["Titulo"] = "Erro!";

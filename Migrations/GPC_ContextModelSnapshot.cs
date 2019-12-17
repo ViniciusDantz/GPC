@@ -43,13 +43,13 @@ namespace GPC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Data");
+
                     b.Property<int>("IdJogador");
 
                     b.Property<int>("JogadorId");
 
                     b.Property<double>("Pontos");
-
-                    b.Property<DateTime>("data");
 
                     b.HasKey("Id");
 

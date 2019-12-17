@@ -32,7 +32,7 @@ namespace GPC.Migrations
                     IdJogador = table.Column<int>(nullable: false),
                     JogadorId = table.Column<int>(nullable: false),
                     Pontos = table.Column<double>(nullable: false),
-                    data = table.Column<DateTime>(nullable: false)
+                    Data = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

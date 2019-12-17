@@ -5,18 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GPC.Models;
+using GPC.Services;
 
 namespace GPC.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly PlacarService _placarService;
+        public HomeController(PlacarService placarService)
         {
-            return View();
+            _placarService = placarService;
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
+            var placares = await _placarService.FindAllAsync();
+
             return View();
         }
 

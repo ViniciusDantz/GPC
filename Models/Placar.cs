@@ -16,6 +16,7 @@ namespace GPC.Models
         public double Pontos { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:DD/MM/AAAA}")]
         public DateTime Data { get; set; }
     }
 }

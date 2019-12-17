@@ -2961,13 +2961,8 @@
   "RootNamespace": "GPC",
   "Documents": [
     {
-      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador copy/Cadastro.cshtml",
-      "TargetPath": "Views/Jogador copy/Cadastro.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador copy/Delete.cshtml",
-      "TargetPath": "Views/Jogador copy/Delete.cshtml",
+      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Placar/Delete.cshtml",
+      "TargetPath": "Views/Placar/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3001,6 +2996,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Placar/Index.cshtml",
+      "TargetPath": "Views/Placar/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -3011,13 +3011,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador copy/Index.cshtml",
-      "TargetPath": "Views/Jogador copy/Index.cshtml",
+      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador/Index.cshtml",
+      "TargetPath": "Views/Jogador/Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador/Index.cshtml",
-      "TargetPath": "Views/Jogador/Index.cshtml",
+      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Placar/Editar.cshtml",
+      "TargetPath": "Views/Placar/Editar.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3031,11 +3031,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Jogador copy/Editar.cshtml",
-      "TargetPath": "Views/Jogador copy/Editar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views/Shared/_Layout.cshtml",
       "FileKind": "mvc"
@@ -3043,6 +3038,11 @@
     {
       "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Shared/_StatusMessage.cshtml",
       "TargetPath": "Views/Shared/_StatusMessage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/media/files/Usuarios/Vinicius Dantas/Documentos/Repositorio Github/C#/GPC/Views/Placar/Cadastro.cshtml",
+      "TargetPath": "Views/Placar/Cadastro.cshtml",
       "FileKind": "mvc"
     }
   ],

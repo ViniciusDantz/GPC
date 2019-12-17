@@ -19,23 +19,25 @@
     <div class="col-md-4">
         <form asp-action="Editar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="NomeAntigo" name="NomeAntigo"/>
             <input type="hidden" asp-for="Placar.Id" />
-            <div class="form-group">
-                <label asp-for="Placar.Nome" class="control-label">Nome <span class="text-danger">*</span></label>
-                <input asp-for="Placar.Nome" Title="Edite aqui a nome do placar" type="text" minlength="3" maxlength="40" class="form-control" />
-                <span asp-validation-for="Placar.Nome" class="text-danger"></span>
+            <select class="selectpicker" title="Jogador" id="selectJogador" name="Placar.IdJogador"
+            asp-for="Placar.IdJogador" data-live-search="true" data-style="btn-primary" data-width="100%">
+                <option style="background-color: #2c3e50; text-align: center;" disabled="true">Jogador</option>
+                @foreach(var jogador in Model.Jogadores){
+                    <option value="@jogador.Id">@(jogador.Nome)</option>
+                }
+            </select>
+            <span asp-validation-for="Placar.Jogador.Id" class="text-danger"></span>
+            <div class="form-group" style="margin-top: 20px;">
+                <label asp-for="Placar.Pontos" class="control-label">Pontos <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Pontos" type="text" maxlength="6" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+                Title="Edite aqui os pontos do placar" class="form-control" />
+                <span asp-validation-for="Placar.Pontos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Placar.Idade" class="control-label">Idade <span class="text-danger">*</span></label>
-                <input asp-for="Placar.Idade" type="text" maxlength="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
-                Title="Edite aqui a idade do placar" class="form-control" />
-                <span asp-validation-for="Placar.Idade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Placar.Nacionalidade" class="control-label"></label>
-                <input asp-for="Placar.Nacionalidade" Title="Edite aqui a nacionalidade do placar" class="form-control"/>
-                <span asp-validation-for="Placar.Nacionalidade" class="text-danger"></span>
+                <label asp-for="Placar.Data" class="control-label">Data <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Data" Title="Edite aqui a data do placar" class="form-control"/>
+                <span asp-validation-for="Placar.Data" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
