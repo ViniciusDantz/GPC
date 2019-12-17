@@ -20,7 +20,7 @@ namespace GPC.Controllers
         public async Task<IActionResult> Index()
         {
             var placares = await _placarService.FindAllAsync();
-
+            //placares.where(obj => obj.Pontos);
             return View();
         }
 
