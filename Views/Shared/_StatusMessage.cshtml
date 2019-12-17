@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Html
+@if(TempData["Message"] != null) { 
+    <div id="modal" class='alert @(TempData["CssClassName"]) alert-dismissible' style="color: black; position: absolute; top: 0; margin: 80px 17%; width: 600px; height: auto; z-index: 5;" role="alert">
+        <div id="progresso" style="background-color: #2c3e50; z-index: 2; height: 2px; border-radius: 2px;width: 0%;"></div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>@(TempData["Titulo"])</strong>
+        <br />
+        <p style="width: 100%">@(new HtmlString((String) TempData["Message"]))</p>    
+    </div>
+}
+
+<script>
+    setTimeout(function(){
+        $('#modal').fadeOut();
+    }, 3400);
+
+    var start = new Date();
+    var maxTime = 3500;
+    var timeoutVal = Math.floor(maxTime/100);
+    animateUpdate();
+
+    function updateProgress(percentage) {
+        document.getElementById("progresso").style.width = percentage + "%";
+    }
+
+    function animateUpdate() {
+        var now = new Date();
+        var timeDiff = now.getTime() - start.getTime();
+        var perc = Math.round((timeDiff/maxTime)*100);
+        if (perc <= 100) {
+            updateProgress(perc);
+            setTimeout(animateUpdate, timeoutVal);
+        }
+    }
+</script>

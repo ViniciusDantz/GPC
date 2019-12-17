@@ -1,0 +1,57 @@
+﻿@model GPC.Models.ViewModels.PlacarViewModel
+
+@{
+    ViewData["Title"] = "Editar Placar";
+}
+<br />
+<partial name="../Shared/_StatusMessage" />
+<h2>@(ViewData["Title"])</h2>
+
+<style>
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NomeAntigo" name="NomeAntigo"/>
+            <input type="hidden" asp-for="Placar.Id" />
+            <div class="form-group">
+                <label asp-for="Placar.Nome" class="control-label">Nome <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Nome" Title="Edite aqui a nome do placar" type="text" minlength="3" maxlength="40" class="form-control" />
+                <span asp-validation-for="Placar.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.Idade" class="control-label">Idade <span class="text-danger">*</span></label>
+                <input asp-for="Placar.Idade" type="text" maxlength="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+                Title="Edite aqui a idade do placar" class="form-control" />
+                <span asp-validation-for="Placar.Idade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placar.Nacionalidade" class="control-label"></label>
+                <input asp-for="Placar.Nacionalidade" Title="Edite aqui a nacionalidade do placar" class="form-control"/>
+                <span asp-validation-for="Placar.Nacionalidade" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Salvar" Title="Salvar dados do placar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-top: 15px;">
+    <a asp-action="Index" style="color: #e74c3c; display: flex; align-items: center;" class="text-danger">
+        <i class="fas fa-arrow-left fa-2x" style="margin: 0px 10px 0px 0px;"></i>
+        <p style="margin: 0px;" title="Voltar à lista de placares">Voltar à lista</p>
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

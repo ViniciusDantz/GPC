@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GPC.Models.Jogador>
+
+@{
+    ViewData["Title"] = "Jogadores(as)";
+}
+<style>
+    .btn-success.pers{
+        padding-right: 10px;
+        padding-left: 10px;
+        background: none;
+        color: #18bc9c;
+        border-radius: 20px;
+        font-size: 14px;
+        font-style: normal;
+    }
+    tr th{
+        text-align: center;
+    }
+    .table > tbody > tr > td{
+        vertical-align: middle;
+        word-break: break-all;
+    }
+</style>
+<br />
+<h2 style="display: inline;">@(ViewData["Title"])</h2>
+<partial name="../Shared/_StatusMessage" />
+<div style="display: inline; float: right;" class="form-group text-right">
+    <button class="btn btn-success" onclick="location.href='@Url.Action("Cadastro")';">Cadastrar jogador(a)</button>
+</div>
+
+<div style="border-radius: 10px; overflow: hidden; border: 1px solid #2c3e50; display: inline-table; width: 100%; text-align: center;">
+    <table class="table table-striped table-hover" style="text-align: center; table-layout: fixed;">
+        <thead class="bg-primary">
+            <tr>
+                <th scope="col" style="width: 30%;">
+                    @Html.DisplayNameFor(model => model.Nome).ToUpper()
+                </th>
+                <th scope="col" style="width: 5%;">
+                    @Html.DisplayNameFor(model => model.Idade).ToUpper()
+                </th>
+                <th scope="col" style="width: 30%;">
+                    @Html.DisplayNameFor(model => model.Nacionalidade).ToUpper()
+                </th>
+                <th style="width: 12%;">AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nacionalidade)
+                </td>
+                <td style="justify-content: space-between; display: flex;">
+                    <a style="float: right;" asp-action="Editar" asp-route-id="@item.Id"><i class="fas fa-user-edit fa-lg btn btn-success pers"> Editar</i></a> 
+                    <a style="float: right;" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-user-minus fa-lg btn btn-success pers"> Deletar</i></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    @if(Model.Cast<object>().Any() == false){
+        <h4>Não foram encontrados(as) jogadores(as) cadastrados(as) no sistema.</h4>
+    }
+</div>

@@ -1,0 +1,22 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "CodeLibrary",
+            "dialect": "MySQL",
+            "name": "CodeLibrary",
+            "password": "eit8wrailwiOl=",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        },
+        {
+            "askForPassword": true,
+            "database": "GPC-dc956010-2aee-4532-9f36-f5da0fa82a2c",
+            "dialect": "MSSQL",
+            "name": "localhost",
+            "port": 1433,
+            "server": "localhost",
+            "username": "SA"
+        }
+    ]
+}
